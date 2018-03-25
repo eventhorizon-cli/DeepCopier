@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DeepCopy.Test.TestClasses
+namespace DeepCopier.Test.TestClasses
 {
     class ClassD
     {

@@ -1,6 +1,6 @@
 /.vs
 /test/obj
 /test/bin
-/src/DeepCopy/obj
-/src/DeepCopy/bin
-/src/DeepCopy/.vs/DeepCopy/v15/*.suo
+/src/DeepCopier/obj
+/src/DeepCopier/bin
+/src/DeepCopier/.vs/DeepCopier/v15/*.suo

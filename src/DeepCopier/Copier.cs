@@ -6,12 +6,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace DeepCopy
+namespace DeepCopier
 {
     /// <summary>
     /// 利用表达式树实现深拷贝的类
     /// </summary>
-    public static class DeepCopyUtil
+    public static class Copier
     {
         private static Type _typeUtil;
 
@@ -29,9 +29,9 @@ namespace DeepCopy
         private static MethodInfo _copyListMethodInfo;
 
         private static string _listTypeFullName;
-        static DeepCopyUtil()
+        static Copier()
         {
-            _typeUtil = typeof(DeepCopyUtil);
+            _typeUtil = typeof(Copier);
             _typeString = typeof(string);
             _typeIEnumerable = typeof(IEnumerable);
             _caches = new ConcurrentDictionary<(Type, Type), MulticastDelegate>();
@@ -138,6 +138,12 @@ namespace DeepCopy
             }
         }
 
+        /// <summary>
+        /// 拷贝List
+        /// </summary>
+        /// <typeparam name="TElement">源List元素类型</typeparam>
+        /// <param name="list">源List</param>
+        /// <returns>深拷贝完成的List</returns>
         private static List<TElement> CopyList<TElement>(List<TElement> list)
         {
             if (list == null)
@@ -164,6 +170,12 @@ namespace DeepCopy
             return result;
         }
 
+        /// <summary>
+        /// 拷贝数组
+        /// </summary>
+        /// <typeparam name="TElement">源数组元素类型</typeparam>
+        /// <param name="array">源List</param>
+        /// <returns>深拷贝完成的数组</returns>
         private static TElement[] CopyArray<TElement>(TElement[] array)
         {
             if (array == null)

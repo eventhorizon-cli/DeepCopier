@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>blurhkh</Authors>
+    <AssemblyName>DeepCopier</AssemblyName>
+    <Version>1.0.0</Version>
+    <Description>DeepCopy POCO by Expression Tree</Description>
+    <DocumentationFile>bin\Debug\netstandard2.0\DeepCopier.xml</DocumentationFile>
+  </PropertyGroup>
+</Project>

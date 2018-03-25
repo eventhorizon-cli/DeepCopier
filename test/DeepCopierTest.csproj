@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\DeepCopy\DeepCopy.csproj" />
+    <ProjectReference Include="..\src\DeepCopier\DeepCopier.csproj" />
   </ItemGroup>
 
 </Project>

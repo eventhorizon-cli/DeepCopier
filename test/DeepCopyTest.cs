@@ -1,12 +1,12 @@
 using System.Linq;
 using Xunit;
-using DeepCopy.Test.TestClasses;
-using DeepCopy;
+using DeepCopier.Test.TestClasses;
+using DeepCopier;
 using System.Collections.Generic;
 
 namespace test
 {
-    public class DeepCopyTest
+    public class DeepCopierTest
     {
         /// <summary>
         /// ≤‚ ‘øΩ±¥ºÚµ•µƒ Ù–‘
@@ -20,7 +20,7 @@ namespace test
                 StringProp = "test"
             };
 
-            ClassB b = DeepCopyUtil.Copy<ClassA, ClassB>(a);
+            ClassB b = Copier.Copy<ClassA, ClassB>(a);
 
             Assert.Equal(a.ValueTypeProp, b.ValueTypeProp);
             Assert.Equal(a.StringProp, b.StringProp);
@@ -43,7 +43,7 @@ namespace test
                 }
             };
 
-            ClassC c = DeepCopyUtil.Copy<ClassB, ClassC>(b);
+            ClassC c = Copier.Copy<ClassB, ClassC>(b);
 
             Assert.Equal(b.ValueTypeProp, c.ValueTypeProp);
             Assert.Equal(b.StringProp, c.StringProp);
@@ -77,7 +77,7 @@ namespace test
                 }
             };
 
-            ClassE e = DeepCopyUtil.Copy<ClassD, ClassE>(d);
+            ClassE e = Copier.Copy<ClassD, ClassE>(d);
             Assert.Equal(d.VuleTypeArray, e.VuleTypeArray);
             Assert.NotSame(d.VuleTypeArray, e.VuleTypeArray);
 
@@ -110,7 +110,7 @@ namespace test
                 }
             };
 
-            ClassE e2 = DeepCopyUtil.Copy<ClassD, ClassE>(d2);
+            ClassE e2 = Copier.Copy<ClassD, ClassE>(d2);
             Assert.Equal(d2.VuleTypeList, e2.VuleTypeList);
             Assert.NotSame(d2.VuleTypeList, e2.VuleTypeList);
 

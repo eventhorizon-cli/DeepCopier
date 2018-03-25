@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{62260C59-358E-4C17-9145-AA3B1AC76099}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeepCopy", "src\DeepCopy\DeepCopy.csproj", "{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CD795DF8-F62B-45CB-A95E-35C525EB29BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeepCopy.Test", "test\DeepCopy.Test.csproj", "{E1433A5F-5970-47A7-BE8A-3611F6E7DDAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeepCopierTest", "test\DeepCopierTest.csproj", "{E1433A5F-5970-47A7-BE8A-3611F6E7DDAC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeepCopier", "src\DeepCopier\DeepCopier.csproj", "{43156AAF-7A59-41AB-962B-D41875F7BC70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +21,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}.Debug|x64.Build.0 = Debug|Any CPU
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}.Debug|x86.Build.0 = Debug|Any CPU
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}.Release|x64.ActiveCfg = Release|Any CPU
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}.Release|x64.Build.0 = Release|Any CPU
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}.Release|x86.ActiveCfg = Release|Any CPU
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D}.Release|x86.Build.0 = Release|Any CPU
 		{E1433A5F-5970-47A7-BE8A-3611F6E7DDAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E1433A5F-5970-47A7-BE8A-3611F6E7DDAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1433A5F-5970-47A7-BE8A-3611F6E7DDAC}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -45,13 +33,25 @@ Global
 		{E1433A5F-5970-47A7-BE8A-3611F6E7DDAC}.Release|x64.Build.0 = Release|Any CPU
 		{E1433A5F-5970-47A7-BE8A-3611F6E7DDAC}.Release|x86.ActiveCfg = Release|Any CPU
 		{E1433A5F-5970-47A7-BE8A-3611F6E7DDAC}.Release|x86.Build.0 = Release|Any CPU
+		{43156AAF-7A59-41AB-962B-D41875F7BC70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43156AAF-7A59-41AB-962B-D41875F7BC70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43156AAF-7A59-41AB-962B-D41875F7BC70}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{43156AAF-7A59-41AB-962B-D41875F7BC70}.Debug|x64.Build.0 = Debug|Any CPU
+		{43156AAF-7A59-41AB-962B-D41875F7BC70}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{43156AAF-7A59-41AB-962B-D41875F7BC70}.Debug|x86.Build.0 = Debug|Any CPU
+		{43156AAF-7A59-41AB-962B-D41875F7BC70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43156AAF-7A59-41AB-962B-D41875F7BC70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43156AAF-7A59-41AB-962B-D41875F7BC70}.Release|x64.ActiveCfg = Release|Any CPU
+		{43156AAF-7A59-41AB-962B-D41875F7BC70}.Release|x64.Build.0 = Release|Any CPU
+		{43156AAF-7A59-41AB-962B-D41875F7BC70}.Release|x86.ActiveCfg = Release|Any CPU
+		{43156AAF-7A59-41AB-962B-D41875F7BC70}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{16DC7CB8-17C0-427B-969D-BE3EFA3E9D6D} = {62260C59-358E-4C17-9145-AA3B1AC76099}
 		{E1433A5F-5970-47A7-BE8A-3611F6E7DDAC} = {CD795DF8-F62B-45CB-A95E-35C525EB29BE}
+		{43156AAF-7A59-41AB-962B-D41875F7BC70} = {62260C59-358E-4C17-9145-AA3B1AC76099}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0FCFB83A-5BD4-4019-85BA-FF0E274200C3}
