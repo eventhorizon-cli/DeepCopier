@@ -9,6 +9,24 @@ namespace test
     public class DeepCopierTest
     {
         /// <summary>
+        /// 测试拷贝一个对象本身
+        /// </summary>
+        [Fact]
+        public void TestSelfCopy()
+        {
+            ClassA a = new ClassA
+            {
+                ValueTypeProp = 123,
+                StringProp = "test"
+            };
+
+            ClassA a2 = Copier.Copy(a);
+
+            Assert.Equal(a.ValueTypeProp, a2.ValueTypeProp);
+            Assert.Equal(a.StringProp, a2.StringProp);
+        }
+
+        /// <summary>
         /// 测试拷贝简单的属性
         /// </summary>
         [Fact]
@@ -20,7 +38,7 @@ namespace test
                 StringProp = "test"
             };
 
-            ClassB b = Copier<ClassA, ClassB>.Copy(a);
+            ClassB b = Copier.Copy<ClassA, ClassB>(a);
 
             Assert.Equal(a.ValueTypeProp, b.ValueTypeProp);
             Assert.Equal(a.StringProp, b.StringProp);
@@ -43,7 +61,7 @@ namespace test
                 }
             };
 
-            ClassC c = Copier<ClassB, ClassC>.Copy(b);
+            ClassC c = Copier.Copy<ClassB, ClassC>(b);
 
             Assert.Equal(b.ValueTypeProp, c.ValueTypeProp);
             Assert.Equal(b.StringProp, c.StringProp);
@@ -77,7 +95,7 @@ namespace test
                 }
             };
 
-            ClassE e = Copier<ClassD, ClassE>.Copy(d);
+            ClassE e = Copier.Copy<ClassD, ClassE>(d);
             Assert.Equal(d.VuleTypeArray, e.VuleTypeArray);
             Assert.NotSame(d.VuleTypeArray, e.VuleTypeArray);
 
@@ -110,7 +128,7 @@ namespace test
                 }
             };
 
-            ClassE e2 = Copier<ClassD, ClassE>.Copy(d2);
+            ClassE e2 = Copier.Copy<ClassD, ClassE>(d2);
             Assert.Equal(d2.VuleTypeList, e2.VuleTypeList);
             Assert.NotSame(d2.VuleTypeList, e2.VuleTypeList);
 

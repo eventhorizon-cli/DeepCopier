@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DeepCopier.Test.TestClasses
 {
-     class ClassA
+    class ClassA
     {
         public int ValueTypeProp { get; set; }
 
