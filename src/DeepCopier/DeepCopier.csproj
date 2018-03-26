@@ -1,11 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
+    <PackageProjectUrl>https://github.com/blurhkh/DeepCopier</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/blurhkh/DeepCopier/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright>blurhkh, 2018</Copyright>
     <Authors>blurhkh</Authors>
     <AssemblyName>DeepCopier</AssemblyName>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Description>DeepCopy POCO by Expression Tree</Description>
     <DocumentationFile>bin\Debug\netstandard2.0\DeepCopier.xml</DocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 </Project>

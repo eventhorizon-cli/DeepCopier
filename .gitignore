@@ -4,3 +4,5 @@
 /src/DeepCopier/obj
 /src/DeepCopier/bin
 /src/DeepCopier/.vs/DeepCopier/v15/*.suo
+/test/DeepCopier.Test/bin
+/test/DeepCopier.Test/obj
