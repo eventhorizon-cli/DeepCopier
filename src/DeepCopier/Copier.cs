@@ -11,7 +11,9 @@ namespace DeepCopier
     /// <summary>
     /// 利用表达式树实现深拷贝的类
     /// </summary>
-    public static class Copier
+    /// <typeparam name="TSource">源对象类型</typeparam>
+    /// <typeparam name="TTarget">目标对象类型</typeparam>
+    public static class Copier<TSource, TTarget>
     {
         private static Type _typeUtil;
 
@@ -20,46 +22,43 @@ namespace DeepCopier
         private static Type _typeIEnumerable;
 
         // 缓存委托
-        private static ConcurrentDictionary<(Type, Type), MulticastDelegate> _caches;
-
-        private static MethodInfo _copyMethodInfo;
+        private static Func<TSource, TTarget> _copy;
 
         private static MethodInfo _copyArrayMethodInfo;
 
         private static MethodInfo _copyListMethodInfo;
 
         private static string _listTypeFullName;
+
+
         static Copier()
         {
-            _typeUtil = typeof(Copier);
+            _typeUtil = typeof(Copier<,>);
             _typeString = typeof(string);
             _typeIEnumerable = typeof(IEnumerable);
-            _caches = new ConcurrentDictionary<(Type, Type), MulticastDelegate>();
-            _copyMethodInfo = _typeUtil.GetMethod(nameof(Copy));
-            _copyArrayMethodInfo = _typeUtil.GetMethod(nameof(CopyArray), BindingFlags.NonPublic | BindingFlags.Static);
-            _copyListMethodInfo = _typeUtil.GetMethod(nameof(CopyList), BindingFlags.NonPublic | BindingFlags.Static);
+            _copyArrayMethodInfo = typeof(Copier<TSource, TTarget>).GetMethod(nameof(CopyArray), BindingFlags.NonPublic | BindingFlags.Static);
+            _copyListMethodInfo = typeof(Copier<TSource, TTarget>).GetMethod(nameof(CopyList), BindingFlags.NonPublic | BindingFlags.Static);
             _listTypeFullName = typeof(List<>).FullName.TrimEnd('1');
         }
 
         /// <summary>
         /// 新建目标类型实例，并将源对象的属性值拷贝至目标对象的对应属性
         /// </summary>
-        /// <typeparam name="TSource">源对象类型</typeparam>
-        /// <typeparam name="TTarget">目标对象类型</typeparam>
         /// <param name="source">源对象实例</param>
         /// <returns>深拷贝了源对象属性的目标对象实例</returns>
-        public static TTarget Copy<TSource, TTarget>(TSource source)
+        public static TTarget Copy(TSource source)
         {
-            Type sourceType = typeof(TSource);
-            Type targetType = typeof(TTarget);
-            var key = (sourceType, targetType);
-            if (_caches.TryGetValue(key, out var copy))
+            // 因为对于泛型类型而言，每次传入不同的泛型参数都会调用静态构造函数，所以可以通过这种方式进行缓存
+            if (_copy != null)
             {
                 // 如果之前缓存过，则直接调用缓存的委托
-                return (TTarget)copy.DynamicInvoke(source);
+                return _copy(source);
             }
             else
             {
+                Type sourceType = typeof(TSource);
+                Type targetType = typeof(TTarget);
+
                 var parameterExpression = Expression.Parameter(sourceType, nameof(source));
 
                 var memberBindings = new List<MemberBinding>();
@@ -115,10 +114,8 @@ namespace DeepCopier
                             // 非字符串引用类型做递归处理
                             if (IsRefTypeExceptString(targetPropType))
                             {
-                                // 获取添加了类型参数信息的泛型方法信息
-                                var method = _copyMethodInfo.MakeGenericMethod(sourcePropType, targetPropType);
                                 // 进行递归
-                                expression = Expression.Call(null, method, expression);
+                                expression = Expression.Call(null, _typeUtil.MakeGenericType(sourcePropType, targetPropType).GetMethod(nameof(Copy)), expression);
                             }
                             memberBindings.Add(Expression.Bind(targetPropInfo, expression));
                         }
@@ -132,9 +129,8 @@ namespace DeepCopier
                 var lambdaExpression = Expression.Lambda<Func<TSource, TTarget>>(
                     memberInitExpression, parameterExpression);
 
-                copy = lambdaExpression.Compile();
-                _caches.TryAdd(key, copy);
-                return (TTarget)copy.DynamicInvoke(source);
+                _copy = lambdaExpression.Compile();
+                return _copy(source);
             }
         }
 
@@ -157,7 +153,7 @@ namespace DeepCopier
             {
                 foreach (TElement item in list)
                 {
-                    result.Add(Copy<TElement, TElement>(item));
+                    result.Add(Copier<TElement, TElement>.Copy(item));
                 }
             }
             else
@@ -187,7 +183,7 @@ namespace DeepCopier
             {
                 for (int i = 0; i < array.Length; i++)
                 {
-                    result[i] = Copy<TElement, TElement>(array[i]);
+                    result[i] = Copier<TElement, TElement>.Copy(array[i]);
                 }
             }
             else
