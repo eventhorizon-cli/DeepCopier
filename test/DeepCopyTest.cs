@@ -4,10 +4,34 @@ using DeepCopier.Test.TestClasses;
 using DeepCopier;
 using System.Collections.Generic;
 
-namespace test
+namespace DeepCopier.Test
 {
     public class DeepCopierTest
     {
+        /// <summary>
+        /// 测试遍历对象
+        /// </summary>
+        [Fact]
+        public void TestEnumable()
+        {
+            int[] a = new[] { 1, 2, 3 };
+
+            int[] b = Copier.Copy(a);
+
+            Assert.Equal(a, b);
+
+            List<string> c = new List<string> { "1", "2", "3" };
+
+            List<string> d = Copier.Copy(c);
+
+            Assert.Equal(c, d);
+
+            int[][] e = new[] { new[] { 1, 2, 3 }, new[] { 1, 2, 3 }, new[] { 1, 2, 3 } };
+            int[][] f = Copier.Copy(e);
+            Assert.NotSame(e, f);
+            Assert.Equal(e.SelectMany(nums => nums), e.SelectMany(nums => nums));
+        }
+
         /// <summary>
         /// 测试拷贝一个对象本身
         /// </summary>

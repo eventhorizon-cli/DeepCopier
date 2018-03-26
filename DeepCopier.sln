@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{62260C59-358
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CD795DF8-F62B-45CB-A95E-35C525EB29BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeepCopierTest", "test\DeepCopierTest.csproj", "{E1433A5F-5970-47A7-BE8A-3611F6E7DDAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeepCopier.Test", "test\DeepCopier.Test.csproj", "{E1433A5F-5970-47A7-BE8A-3611F6E7DDAC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeepCopier", "src\DeepCopier\DeepCopier.csproj", "{43156AAF-7A59-41AB-962B-D41875F7BC70}"
 EndProject
