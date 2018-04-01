@@ -166,5 +166,31 @@ namespace DeepCopier.Test
 
             Assert.NotSame(d2.ClassATypeList, e2.ClassATypeList);
         }
+
+        /// <summary>
+        /// ²âÊÔHashSetµÄ¿½±´
+        /// </summary>
+        [Fact]
+        public void TestHashSet()
+        {
+            ClassF f = new ClassF
+            {
+                ClassACollection = new HashSet<ClassA>
+                {
+                    new ClassA
+                    {
+                        ValueTypeProp = 123,
+                        StringProp = "test"
+                    }
+                }
+            };
+
+            var f2 = Copier.Copy(f);
+
+            Assert.NotSame(f.ClassACollection, f2.ClassACollection);
+
+            Assert.Equal(f.ClassACollection.Select(a => a.StringProp), f2.ClassACollection.Select(a => a.StringProp));
+
+        }
     }
 }

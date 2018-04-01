@@ -39,9 +39,9 @@ namespace DeepCopier
                 Expression bodyExpr = null;
 
                 // 如果对象属性可以遍历（目前只支持数组和List）
-                if (sourceType == targetType && Utils.IsIEnumerableExceptString(targetType))
+                if (sourceType == targetType && Utils.IsIEnumerableExceptString(sourceType))
                 {
-                    bodyExpr = Expression.Call(null, EnumerableCopier.GetMethondInfo(targetType), paramExpr);
+                    bodyExpr = Expression.Call(null, EnumerableCopier.GetMethondInfo(sourceType), paramExpr);
                 }
                 else
                 {
