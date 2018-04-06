@@ -7,8 +7,8 @@
     <Copyright>blurhkh, 2018</Copyright>
     <Authors>blurhkh</Authors>
     <AssemblyName>DeepCopier</AssemblyName>
-    <Version>1.0.3</Version>
-    <Description>DeepCopy POCO by Expression Tree</Description>
+    <Version>1.0.4</Version>
+    <Description>A small and efficient library that can deep copy object by Expression Tree</Description>
     <DocumentationFile>bin\Debug\netstandard2.0\DeepCopier.xml</DocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>

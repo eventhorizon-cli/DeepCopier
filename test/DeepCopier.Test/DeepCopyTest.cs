@@ -192,5 +192,45 @@ namespace DeepCopier.Test
             Assert.Equal(f.ClassACollection.Select(a => a.StringProp), f2.ClassACollection.Select(a => a.StringProp));
 
         }
+
+
+        /// <summary>
+        /// 测试向已存在的对象拷贝属性值
+        /// </summary>
+        [Fact]
+        public void TestCopyToExistingObject()
+        {
+            ClassA a = new ClassA
+            {
+                ValueTypeProp = 123,
+                StringProp = "test"
+            };
+
+            ClassA a2 = new ClassA();
+            Copier.Copy(a, a2);
+
+            Assert.Equal(a.ValueTypeProp, a2.ValueTypeProp);
+            Assert.Equal(a.StringProp, a2.StringProp);
+
+            ClassB b = new ClassB
+            {
+                ValueTypeProp = 1,
+                StringProp = "string1",
+                ClassATypeProp = new ClassA
+                {
+                    ValueTypeProp = 2,
+                    StringProp = "string2",
+                }
+            };
+
+            ClassC c = new ClassC();
+            Copier.Copy(b, c);
+
+            Assert.Equal(b.ValueTypeProp, c.ValueTypeProp);
+            Assert.Equal(b.StringProp, c.StringProp);
+            Assert.Equal(b.ClassATypeProp.ValueTypeProp, c.ClassATypeProp.ValueTypeProp);
+            Assert.Equal(b.ClassATypeProp.StringProp, c.ClassATypeProp.StringProp);
+            Assert.NotSame(b.ClassATypeProp, c.ClassATypeProp);
+        }
     }
 }
