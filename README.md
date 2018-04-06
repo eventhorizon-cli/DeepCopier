@@ -24,7 +24,7 @@ SomeType obj1 = new SomeType();
 AnotherType obj2 = Copier.Copy<SomeType, AnotherType>(obj1);
 ```
 
-### 3.Copy the property values of the given source object into a existing target object.
+### 3.Copy the property values of the given source object into an existing target object.
 ```C#
 /* The source and target classes do not have to match or even be derived
    from each other, as long as the properties match. */
