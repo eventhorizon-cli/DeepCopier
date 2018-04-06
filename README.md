@@ -13,7 +13,7 @@ SomeType obj1 = new SomeType();
 SomeType obj2 = Copier.Copy(obj1);
 
 List<SomeType> list1 = new List<SomeType>{ obj1 };
-List<SomeType> list2 = Copier.Copy(list);
+List<SomeType> list2 = Copier.Copy(list1);
 ```
 
 ### 2.Create a new instance of the target type, and deep copy the property values of the given source object into the target instance.
