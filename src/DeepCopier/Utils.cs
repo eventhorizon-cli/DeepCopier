@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace DeepCopier
 {
@@ -12,11 +10,11 @@ namespace DeepCopier
     /// </summary>
     internal static class Utils
     {
-        private static Type _typeString = typeof(string);
+        private static readonly Type _typeString = typeof(string);
 
-        private static Type _typeIEnumerable = typeof(IEnumerable);
+        private static readonly Type _typeIEnumerable = typeof(IEnumerable);
 
-        private static ConcurrentDictionary<Type, Func<object>> _ctors = new ConcurrentDictionary<Type, Func<object>>();
+        private static readonly ConcurrentDictionary<Type, Func<object>> _ctors = new ConcurrentDictionary<Type, Func<object>>();
 
         /// <summary>
         /// 判断是否是string以外的引用类型

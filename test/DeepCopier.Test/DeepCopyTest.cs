@@ -1,7 +1,6 @@
 using System.Linq;
 using Xunit;
 using DeepCopier.Test.TestClasses;
-using DeepCopier;
 using System.Collections.Generic;
 
 namespace DeepCopier.Test
@@ -103,8 +102,8 @@ namespace DeepCopier.Test
             // ²âÊÔÊý×éµÄ¿½±´
             ClassD d = new ClassD
             {
-                VuleTypeArray = new int[] { 1, 2, 3 },
-                ClassATypeArray = new ClassA[]
+                VuleTypeArray = new [] { 1, 2, 3 },
+                ClassATypeArray = new []
                 {
                     new ClassA
                     {

@@ -37,7 +37,7 @@ namespace DeepCopier
 
             var paramExpr = Expression.Parameter(sourceType, nameof(source));
 
-            Expression bodyExpr = null;
+            Expression bodyExpr;
 
             // 如果对象可以遍历（目前只支持数组和ICollection<T>实现类）
             if (sourceType == targetType && Utils.IsIEnumerableExceptString(sourceType))
@@ -116,7 +116,7 @@ namespace DeepCopier
             // 如果双方都可以被遍历
             if (Utils.IsIEnumerableExceptString(sourceType) && Utils.IsIEnumerableExceptString(targetType))
             {
-                //TODO
+                // TODO
                 // 向已存在的数组或者ICollection<T>拷贝的功能暂不支持
             }
             else
@@ -124,7 +124,6 @@ namespace DeepCopier
                 var paramSourceExpr = Expression.Parameter(sourceType, nameof(source));
                 var paramTargetExpr = Expression.Parameter(targetType, nameof(target));
 
-                Expression bodyExpr = null;
                 var binaryExpressions = new List<Expression>();
                 // 遍历目标对象的所有属性信息
                 foreach (var targetPropInfo in targetType.GetProperties())
@@ -158,8 +157,7 @@ namespace DeepCopier
                     }
                 }
 
-                bodyExpr = Expression.Block(binaryExpressions);
-
+                Expression bodyExpr = Expression.Block(binaryExpressions);
 
                 var lambdaExpr
                     = Expression.Lambda<Action<TSource, TTarget>>(bodyExpr, paramSourceExpr, paramTargetExpr);

@@ -9,11 +9,11 @@ namespace DeepCopier
     /// </summary>
     internal class EnumerableCopier
     {
-        private static MethodInfo _copyArrayMethodInfo { get; }
+        private static readonly MethodInfo _copyArrayMethodInfo;
 
-        private static MethodInfo _copyICollectionMethodInfo { get; }
+        private static readonly MethodInfo _copyICollectionMethodInfo;
 
-        private static Type _typeICollection = typeof(ICollection<>);
+        private static readonly Type _typeICollection = typeof(ICollection<>);
 
         static EnumerableCopier()
         {
