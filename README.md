@@ -1,6 +1,6 @@
 # DeepCopier
 
-DeepCopier is a small library  can deep copy object by Expression Tree.
+DeepCopier is a small library that can deep copy object by Expression Tree.
 
 ## Installation:
 Install DeepCopier [NuGet package](https://www.nuget.org/packages/DeepCopier/).
